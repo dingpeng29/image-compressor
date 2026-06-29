@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="免费在线图片压缩工具，支持JPG/PNG/WebP格式，可调节压缩质量和尺寸。纯浏览器本地处理，图片不会上传到服务器，保护隐私安全。">
+<meta name="keywords" content="图片压缩,在线压缩,压缩JPG,压缩PNG,WebP转换,图片优化,image compressor,批量压缩">
+<meta property="og:title" content="图片在线压缩工具 - JPG/PNG/WebP | ToolBox Pro">
+<meta property="og:description" content="免费在线图片压缩，支持JPG/PNG/WebP格式，可调节质量和尺寸，浏览器本地处理。">
+<meta property="og:url" content="https://dingpeng29.github.io/image-compressor/">
+<title>图片在线压缩工具 - JPG/PNG/WebP 优化 | ToolBox Pro</title>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"图片压缩工具","url":"https://dingpeng29.github.io/image-compressor/","description":"在线图片压缩和格式转换，浏览器本地处理","applicationCategory":"Utility","operatingSystem":"All","inLanguage":"zh-CN"}
+</script>
+<style>
+:root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;--border:#e2e8f0;--primary:#3b82f6;--primary-h:#2563eb;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--shadow:0 1px 3px rgba(0,0,0,0.06);--radius:12px;--radius-sm:8px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;}
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.header .logo{font-size:20px;font-weight:700;text-decoration:none;color:var(--text);}
+.header .back{color:var(--text2);text-decoration:none;font-size:14px;}.header .back:hover{color:var(--primary);}
+.container{max-width:900px;margin:0 auto;padding:24px 20px;}
+.hero{text-align:center;padding:32px 20px 24px;}
+.hero h1{font-size:28px;font-weight:800;color:var(--text);}
+.hero p{color:var(--text2);font-size:14px;margin-top:8px;}
+.card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:20px;}
+
+.drop-zone{border:2px dashed var(--border);border-radius:var(--radius-sm);padding:40px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:16px;}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--primary);background:#eff6ff;}
+.drop-zone .icon{font-size:48px;margin-bottom:8px;}
+.drop-zone .hint{font-size:14px;color:var(--text2);}
+.drop-zone .hint strong{color:var(--primary);}
+.drop-zone input{display:none;}
+
+.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:16px;}
+.controls label{font-size:13px;color:var(--text2);font-weight:600;}
+.controls input[type="range"]{width:150px;}
+.controls select,.controls input[type="number"]{padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;background:var(--card);}
+.controls select:focus,.controls input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,130,246,0.1);}
+
+.preview-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+@media(max-width:640px){.preview-row{grid-template-columns:1fr;}}
+.preview-card{border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;text-align:center;}
+.preview-card .label{font-size:12px;color:var(--text2);font-weight:700;margin-bottom:8px;text-transform:uppercase;}
+.preview-card img{max-width:100%;max-height:300px;border-radius:4px;}
+.preview-card .size-info{font-size:13px;color:var(--text2);margin-top:4px;}
+.preview-card .saved{color:var(--green);font-weight:700;}
+
+.donate-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:var(--radius);padding:20px 24px;text-align:center;border:1px solid #fcd34d;margin-bottom:16px;}
+.donate-box h3{color:#92400e;font-size:16px;margin-bottom:4px;}
+.donate-box p{color:#a16207;font-size:13px;margin-bottom:8px;}
+
+.btn{padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.btn-primary{background:var(--primary);color:#fff;}.btn-primary:hover{background:var(--primary-h);}
+.btn-green{background:var(--green);color:#fff;}.btn-green:hover{background:#059669;}
+.btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border);}.btn-secondary:hover{background:var(--border);}
+.btn:disabled{opacity:0.5;cursor:not-allowed;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;justify-content:center;}
+
+.footer{text-align:center;padding:32px 20px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:32px;}.footer a{color:var(--primary);text-decoration:none;}
+.powered{text-align:center;font-size:13px;color:var(--text2);margin-top:24px;}.powered a{color:var(--primary);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<header class="header"><a href="/image-compressor/" class="logo">🖼️ 图片压缩</a><a href="/toolbox-pro/" class="back">← ToolBox Pro</a></header>
+<div class="container">
+<div class="hero"><h1>图片在线压缩工具</h1><p>压缩JPG/PNG/WebP图片，可调节质量和尺寸。所有处理在浏览器本地完成，图片不会上传，安全隐私。</p></div>
+
+<div class="donate-box">
+<h3>❤️ 支持这个工具</h3>
+<p>这个工具完全免费、无广告。如果它帮你省了时间，欢迎支持我们 ☕</p>
+<div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:12px;">
+<div style="text-align:center;background:#fff;padding:16px 20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+<img src="donate-qr.jpg" alt="微信赞赏码" style="width:200px;height:200px;border-radius:8px;display:block;">
+<span style="font-size:13px;color:#92400e;font-weight:700;margin-top:8px;display:block;">微信扫码赞赏</span>
+<span style="font-size:11px;color:#94a3b8;">一次性 · 金额随意</span>
+</div>
+<div style="text-align:center;background:#fff;padding:16px 20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+<span style="font-size:48px;display:block;margin-bottom:8px;">💝</span>
+<span style="font-size:13px;color:#92400e;font-weight:700;display:block;">爱发电按月赞助</span>
+<span style="font-size:11px;color:#94a3b8;display:block;">每月支持 · 持续创作</span>
+<a href="https://afdian.com/a/toolboxpro" target="_blank" style="display:inline-block;margin-top:8px;background:#f59e0b;color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:700;">去爱发电 →</a>
+</div>
+</div>
+<div style="margin-top:12px;">
+<a href="https://github.com/dingpeng29/image-compressor" target="_blank" style="color:#92400e;font-weight:600;text-decoration:none;font-size:13px;">⭐ 也欢迎给个 GitHub Star</a>
+</div>
+</div>
+
+<div class="card">
+<div class="drop-zone" id="dropZone">
+<div class="icon">📁</div>
+<div class="hint">拖拽图片到此处，或 <strong>点击选择图片</strong></div>
+<input type="file" id="fileInput" accept="image/*" multiple>
+</div>
+
+<div id="controls" style="display:none;">
+<div class="controls">
+<label>压缩质量 <span id="qualityVal">80%</span>
+<input type="range" id="quality" min="10" max="100" value="80" oninput="document.getElementById('qualityVal').textContent=this.value+'%';compressCurrent();">
+</label>
+<label>最大宽度
+<input type="number" id="maxWidth" value="0" min="0" style="width:80px;" onchange="compressCurrent();"> px
+</label>
+<label>格式
+<select id="format" onchange="compressCurrent();">
+<option value="image/jpeg">JPEG</option>
+<option value="image/png">PNG</option>
+<option value="image/webp">WebP</option>
+</select>
+</label>
+</div>
+
+<div class="preview-row" id="previewRow"></div>
+
+<div class="btn-row">
+<button class="btn btn-green" id="downloadBtn" onclick="downloadCompressed()" disabled>下载压缩后的图片</button>
+<button class="btn btn-secondary" onclick="downloadAll()" id="downloadAllBtn" disabled>批量下载全部</button>
+<button class="btn btn-secondary" onclick="clearAll()">清空</button>
+</div>
+</div>
+</div>
+
+<div class="powered">由 <a href="/toolbox-pro/">ToolBox Pro</a> 提供支持 · <a href="https://github.com/dingpeng29/image-compressor" target="_blank">GitHub</a></div>
+</div>
+<footer class="footer"><p>Image Compressor — 所有处理在浏览器本地完成，图片不会上传 · <a href="https://github.com/dingpeng29/image-compressor" target="_blank">GitHub</a> · <a href="/toolbox-pro/">更多免费工具 →</a></p></footer>
+
+<script>
+var files = [];
+var compressedResults = [];
+
+var dz = document.getElementById('dropZone');
+dz.addEventListener('click', function(){ document.getElementById('fileInput').click(); });
+dz.addEventListener('dragover', function(e){ e.preventDefault(); dz.classList.add('dragover'); });
+dz.addEventListener('dragleave', function(){ dz.classList.remove('dragover'); });
+dz.addEventListener('drop', function(e){ e.preventDefault(); dz.classList.remove('dragover'); addFiles(e.dataTransfer.files); });
+document.getElementById('fileInput').addEventListener('change', function(e){ addFiles(e.target.files); });
+
+function addFiles(flist){
+Array.from(flist).filter(function(f){ return f.type.match(/image\/(jpeg|png|webp|gif|bmp|svg\+xml)/) || f.name.match(/\.(jpg|jpeg|png|webp|gif|bmp|svg)$/i); }).forEach(function(f){
+files.push(f);
+});
+renderPreviews();
+document.getElementById('controls').style.display = 'block';
+}
+
+function compressCurrent(){
+var q = parseInt(document.getElementById('quality').value) / 100;
+var fmt = document.getElementById('format').value;
+var mw = parseInt(document.getElementById('maxWidth').value) || 0;
+
+compressedResults = [];
+var promises = files.map(function(f, i){
+return compressImage(f, q, fmt, mw).then(function(r){ compressedResults[i] = r; });
+});
+
+Promise.all(promises).then(function(){
+renderPreviews();
+var hasResults = compressedResults.some(function(r){ return r; });
+document.getElementById('downloadBtn').disabled = !hasResults;
+document.getElementById('downloadAllBtn').disabled = compressedResults.length < 1;
+});
+}
+
+function compressImage(file, quality, format, maxWidth){
+return new Promise(function(resolve){
+var reader = new FileReader();
+reader.onload = function(e){
+var img = new Image();
+img.onload = function(){
+var w = img.width, h = img.height;
+if (maxWidth > 0 && w > maxWidth){ h = Math.round(h * maxWidth / w); w = maxWidth; }
+var canvas = document.createElement('canvas');
+canvas.width = w; canvas.height = h;
+var ctx = canvas.getContext('2d');
+ctx.drawImage(img, 0, 0, w, h);
+canvas.toBlob(function(blob){
+resolve({ blob: blob, size: blob.size, width: w, height: h });
+}, format, quality);
+};
+img.src = e.target.result;
+};
+reader.readAsDataURL(file);
+});
+}
+
+function renderPreviews(){
+var row = document.getElementById('previewRow');
+if (files.length === 0){ row.innerHTML = ''; return; }
+row.innerHTML = files.map(function(f, i){
+var r = compressedResults[i];
+var url = r ? URL.createObjectURL(r.blob) : '';
+var origSize = f.size < 1024*1024 ? (f.size/1024).toFixed(1)+' KB' : (f.size/(1024*1024)).toFixed(2)+' MB';
+var compSize = r ? (r.size < 1024*1024 ? (r.size/1024).toFixed(1)+' KB' : (r.size/(1024*1024)).toFixed(2)+' MB') : '';
+var saved = r && r.size < f.size ? ((f.size - r.size) / f.size * 100).toFixed(0) + '%' : '';
+return '<div class="preview-card">' +
+'<div class="label">' + escHtml(f.name) + '</div>' +
+(r ? '<img src="' + url + '" alt="">' : '<div style="height:100px;display:flex;align-items:center;justify-content:center;color:var(--text2);">处理中...</div>') +
+'<div class="size-info">原始: ' + origSize + (r ? ' → 压缩后: <strong>' + compSize + '</strong>' : '') + '</div>' +
+(saved ? '<div class="saved">节省 ' + saved + ' (' + r.width + '×' + r.height + ')</div>' : '') +
+'</div>';
+}).join('');
+}
+
+function downloadCompressed(){
+if (compressedResults.length === 0) return;
+var r = compressedResults[0];
+if (!r) return;
+downloadBlob(r.blob, 'compressed_' + files[0].name.replace(/\.[^.]+$/, '') + '.' + fmtExt(), document.getElementById('format').value);
+}
+
+function downloadAll(){
+compressedResults.forEach(function(r, i){
+if (!r) return;
+setTimeout(function(){
+downloadBlob(r.blob, 'compressed_' + files[i].name.replace(/\.[^.]+$/, '') + '.' + fmtExt(), document.getElementById('format').value);
+}, i * 200);
+});
+}
+
+function clearAll(){
+files = []; compressedResults = [];
+document.getElementById('previewRow').innerHTML = '';
+document.getElementById('controls').style.display = 'none';
+document.getElementById('downloadBtn').disabled = true;
+document.getElementById('downloadAllBtn').disabled = true;
+document.getElementById('fileInput').value = '';
+}
+
+function fmtExt(){
+var m = document.getElementById('format').value;
+if (m === 'image/jpeg') return 'jpg';
+if (m === 'image/png') return 'png';
+return 'webp';
+}
+
+function downloadBlob(blob, filename, mime){
+var url = URL.createObjectURL(blob);
+var a = document.createElement('a');
+a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
+
+<script>
+(function(){
+var bp = document.createElement('script');
+var curProtocol = window.location.protocol.split(':')[0];
+if (curProtocol === 'https') { bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; }
+else { bp.src = 'http://push.zhanzhang.baidu.com/push.js'; }
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(bp, s);
+})();
+</script>
+</body>
+</html>
